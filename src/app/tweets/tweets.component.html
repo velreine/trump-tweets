@@ -1,0 +1,61 @@
+<h3>Nicky - Twatter Inc</h3>
+
+<div class="row">
+    <div class="col-6 offset-3 text-center">
+        <h1>Search for a specific word:</h1>
+        <div class="form-group">
+            <input 
+                type="text"
+                name="search"
+                id="search"
+                class="form-control"
+                [value]="currentSearch"
+                (keyup)="handleSearchKeyUp($event)"
+            >
+        </div>
+    </div>
+</div>
+
+
+<div *ngFor="let tweet of filteredTweets">    
+    <div class="row">
+        <div class="col-4 offset-4 mb-5">
+            <div class="card">
+                <div class="card-header bg-light">    
+                    <img src="assets/trump-face.jpg" class="tweetProfileImage" alt="Donald Trump Face">
+                    <span class="mx-3">Donald J. Trump</span> <span>✓(Verified)</span>
+                    <p class="my-2">{{ tweet.date }}</p>
+                </div>
+                <div class="card-body">
+                    <p innerHTML="{{ tweet.text }}"></p>
+                    <!-- <p>{{ tweet.text }}</p> -->
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-3 text-center">
+                            <!-- <button class="btn btn-primary btn-block"> -->
+                                <fa-icon [icon]="faComment"></fa-icon>
+                            <!-- </button> -->
+                        </div>
+                        <div class="col-3 text-center">
+                            <!-- <button class="btn btn-primary btn-block"> -->
+                                <fa-icon [icon]="faRetweet"></fa-icon>
+                            <!-- </button> -->
+                        </div>
+                        <div class="col-3 text-center">
+                            <!-- <button class="btn btn-primary btn-block"> -->
+                                <fa-icon [icon]="faHeart"></fa-icon>
+                                <span class="ml-1">{{ nFormatter(tweet.likes) }}</span>
+                            <!-- </button> -->
+                        </div>
+                        <div class="col-3 text-center">
+                            <!-- <button class="btn btn-primary btn-block"> -->
+                                <fa-icon [icon]="faShare"></fa-icon>
+                            <!-- </button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
